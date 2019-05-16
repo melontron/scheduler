@@ -1,5 +1,7 @@
 # Example Usage
-`const {Scheduler, Consumer} = require('scheduler')`
+```js
+const {Scheduler, Consumer} = require('scheduler')
+```
 ## Scheduler
 
 First of all we need to declare scheduler and give the job names which will be scheduled by this scheduler.
