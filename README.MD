@@ -5,8 +5,6 @@
 const {Scheduler, Consumer} = require('job-scheduler')
 ```
 
-## Environment variables
-SQS_REGION=us-east-1
 ## Scheduler
 
 First of all we need to declare scheduler and give the job names which will be scheduled by this scheduler.
