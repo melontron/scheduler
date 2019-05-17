@@ -1,7 +1,7 @@
 {
-  "name": "scheduler",
+  "name": "@lordmelique/job-scheduler",
   "version": "1.0.0",
-  "description": "A simple module for managing delated task jobs using redis pub/sub with AWS SQS",
+  "description": "A simple module for managing delayed task jobs using redis pub/sub with AWS SQS",
   "main": "index.js",
   "dependencies": {
     "aws-sdk": "^2.456.0",
@@ -37,5 +37,8 @@
   "bugs": {
     "url": "https://github.com/melontron/scheduler/issues"
   },
-  "homepage": "https://github.com/melontron/scheduler#readme"
+  "homepage": "https://github.com/melontron/scheduler#readme",
+  "directories": {
+    "example": "examples"
+  }
 }
