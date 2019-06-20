@@ -118,10 +118,10 @@ class Scheduler {
 
   async removeEvent(type, id) {
     const proms = [];
-    const key = this._keyEvent({ type, id };
+    const key = this._keyEvent({ type, id });
     proms.push(this.client.delAsync(key));
     proms.push(this.client.delAsync(this._keyTries(key)));
-    return Promise.all(proms)
+    return Promise.all(proms);
   }
 
   _keyEvent({ type, id }) {

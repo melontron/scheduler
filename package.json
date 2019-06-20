@@ -1,6 +1,6 @@
 {
   "name": "@lordmelique/job-scheduler",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple module for managing delayed task jobs using redis pub/sub with AWS SQS",
   "main": "index.js",
   "dependencies": {
