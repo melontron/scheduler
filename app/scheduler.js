@@ -106,10 +106,7 @@ class Scheduler {
   }
 
   async scheduleEvent({ type, id, ttl, tries }) {
-    if (this.config.types.indexOf(type) === -1) {
-      throw new Error('Invalid job type');
-    }
-
+    this.argValidateType(type);
     tries = tries ? parseInt(tries) : 0;
     const key = this._keyEvent({ type, id });
     await this.client.setAsync(key, id, 'EX', ttl);
@@ -117,6 +114,7 @@ class Scheduler {
   }
 
   async removeEvent(type, id) {
+    this.argValidateType(type);
     const proms = [];
     const key = this._keyEvent({ type, id });
     proms.push(this.client.delAsync(key));
@@ -137,6 +135,11 @@ class Scheduler {
     return type;
   }
 
+  argValidateType(type) {
+    if (!this._validateType(type)) {
+      throw new Error('Invalid job name');
+    }
+  }
   _validateType(type) {
     for (let i = 0; i < this.config.types.length; i++) {
       const cType = this.config.types[i];
