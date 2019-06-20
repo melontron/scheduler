@@ -46,6 +46,8 @@ class Scheduler {
     return {
       redis: {
         port: config.redis.port || 6379,
+        host: config.redis.host || '127.0.0.1',
+        db: config.redis.db || 0,
       },
       enqueueMaxTries: config.enqueueMaxTries || 5,
       retryInterval: config.enqueueMaxTries || 10,
