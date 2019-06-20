@@ -106,10 +106,22 @@ class Scheduler {
   }
 
   async scheduleEvent({ type, id, ttl, tries }) {
+    if (this.config.types.indexOf(type) === -1) {
+      throw new Error('Invalid job type');
+    }
+
     tries = tries ? parseInt(tries) : 0;
     const key = this._keyEvent({ type, id });
     await this.client.setAsync(key, id, 'EX', ttl);
     await this.client.setAsync(this._keyTries(key), tries);
+  }
+
+  async removeEvent(type, id) {
+    const proms = [];
+    const key = this._keyEvent({ type, id };
+    proms.push(this.client.delAsync(key));
+    proms.push(this.client.delAsync(this._keyTries(key)));
+    return Promise.all(proms)
   }
 
   _keyEvent({ type, id }) {
