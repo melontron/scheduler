@@ -26,6 +26,8 @@ class Scheduler {
             }).then((queue) => {
               type.queue = queue.QueueUrl;
               return Promise.resolve();
+            }).catch((e)=>{
+              console.log('ERROR: Cannot create queue', e);
             });
       })(i);
     }
